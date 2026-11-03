@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_email_black_24dp"
                 android:hint="@string/hint_email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress|textNoSuggestions" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
