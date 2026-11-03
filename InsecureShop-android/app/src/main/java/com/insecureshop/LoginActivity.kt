@@ -9,13 +9,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.insecureshop.databinding.ActivityLoginBinding
 import com.insecureshop.util.Prefs
 import com.insecureshop.util.Util
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : SecureBaseActivity() {
     lateinit var mBinding: ActivityLoginBinding
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -35,10 +34,6 @@ class LoginActivity : AppCompatActivity() {
     fun onLogin(view: View) {
         val username = mBinding.edtUserName.text.toString()
         val password = mBinding.edtPassword.text.toString()
-
-        Log.d("userName", username)
-        Log.d("password", password)
-
 
         var auth = Util.verifyUserNamePassword(username, password)
         if (auth) {

@@ -25,7 +25,7 @@ class WebViewActivity : AppCompatActivity() {
         webview.settings.javaScriptEnabled = true
         webview.settings.loadWithOverviewMode = true
         webview.settings.useWideViewPort = true
-        webview.settings.allowUniversalAccessFromFileURLs = true
+        webview.settings.allowUniversalAccessFromFileURLs = false
         webview.settings.userAgentString = USER_AGENT
         webview.webViewClient = CustomWebViewClient()
         val uri : Uri? = intent.data

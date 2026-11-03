@@ -16,6 +16,7 @@ class AboutUsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_us)
+        window.decorView.rootView.filterTouchesWhenObscured = true
         receiver = CustomReceiver()
         registerReceiver(receiver, IntentFilter("com.insecureshop.CUSTOM_INTENT"))
     }
@@ -30,6 +31,7 @@ class AboutUsActivity : AppCompatActivity() {
         val password = Prefs.password!!
 
         val intent = Intent("com.insecureshop.action.BROADCAST")
+        intent.setPackage(packageName)
         intent.putExtra("username", userName)
         intent.putExtra("password", password)
         sendBroadcast(intent)

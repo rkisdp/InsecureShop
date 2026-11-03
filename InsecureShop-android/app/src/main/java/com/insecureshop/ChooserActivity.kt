@@ -21,11 +21,21 @@ class ChooserActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chooser)
         if (intent.extras != null) {
             var uri = intent.getParcelableExtra<Parcelable>("android.intent.extra.STREAM") as Uri
+            if (!isSafeUri(uri)) {
+                finish()
+                return
+            }
             uri = Uri.fromFile(File(uri.toString()))
             makeTempCopy(uri, getFilename(uri))
         }
 
     }
+    private fun isSafeUri(uri: Uri): Boolean = when (uri.scheme) {
+        "content" -> true
+        "file" -> uri.path?.startsWith("/data/") == false
+        else -> false
+    }
+
     private fun makeTempCopy(fileUri: Uri, original_filename: String?): Uri? {
         try {
             val path : String = Environment.getExternalStorageDirectory().absolutePath + File.separator + "insecureshop";
